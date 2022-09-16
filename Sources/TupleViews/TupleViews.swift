@@ -1,14 +1,32 @@
-public struct CoupleView<Base: Sequence>: IteratorProtocol, Sequence {
+extension Sequence {
+    public var couples: CouplesView<Self> {
+        .init(iterator: self.makeIterator())
+    }
+    
+    public var triples: TriplesView<Self> {
+        .init(iterator: self.makeIterator())
+    }
+    
+    public var quadruples: QuadruplesView<Self> {
+        .init(iterator: self.makeIterator())
+    }
+    
+    public var quintuples: QuintuplesView<Self> {
+        .init(iterator: self.makeIterator())
+    }
+    
+    public var sextuples: SextuplesView<Self> {
+        .init(iterator: self.makeIterator())
+    }
+}
+
+public struct CouplesView<Base: Sequence>: IteratorProtocol, Sequence {
     public typealias Element = (
         Base.Iterator.Element,
         Base.Iterator.Element
     )
     
-    private var iterator: Base.Iterator
-    
-    public init(_ base: Base) {
-        iterator = base.makeIterator()
-    }
+    var iterator: Base.Iterator
     
     public mutating func next() -> Element? {
         guard let a = iterator.next() else {
@@ -21,18 +39,14 @@ public struct CoupleView<Base: Sequence>: IteratorProtocol, Sequence {
     }
 }
 
-public struct TripleView<Base: Sequence>: IteratorProtocol, Sequence {
+public struct TriplesView<Base: Sequence>: IteratorProtocol, Sequence {
     public typealias Element = (
         Base.Iterator.Element,
         Base.Iterator.Element,
         Base.Iterator.Element
     )
     
-    private var iterator: Base.Iterator
-    
-    public init(_ base: Base) {
-        iterator = base.makeIterator()
-    }
+    var iterator: Base.Iterator
     
     public mutating func next() -> Element? {
         guard let a = iterator.next() else {
@@ -46,7 +60,7 @@ public struct TripleView<Base: Sequence>: IteratorProtocol, Sequence {
     }
 }
 
-public struct QuadrupleView<Base: Sequence>: IteratorProtocol, Sequence {
+public struct QuadruplesView<Base: Sequence>: IteratorProtocol, Sequence {
     public typealias Element = (
         Base.Iterator.Element,
         Base.Iterator.Element,
@@ -54,11 +68,7 @@ public struct QuadrupleView<Base: Sequence>: IteratorProtocol, Sequence {
         Base.Iterator.Element
     )
     
-    private var iterator: Base.Iterator
-    
-    public init(_ base: Base) {
-        iterator = base.makeIterator()
-    }
+    var iterator: Base.Iterator
     
     public mutating func next() -> Element? {
         guard let a = iterator.next() else {
@@ -73,7 +83,7 @@ public struct QuadrupleView<Base: Sequence>: IteratorProtocol, Sequence {
     }
 }
 
-public struct QuintupleView<Base: Sequence>: IteratorProtocol, Sequence {
+public struct QuintuplesView<Base: Sequence>: IteratorProtocol, Sequence {
     public typealias Element = (
         Base.Iterator.Element,
         Base.Iterator.Element,
@@ -82,11 +92,7 @@ public struct QuintupleView<Base: Sequence>: IteratorProtocol, Sequence {
         Base.Iterator.Element
     )
     
-    private var iterator: Base.Iterator
-    
-    public init(_ base: Base) {
-        iterator = base.makeIterator()
-    }
+    var iterator: Base.Iterator
     
     public mutating func next() -> Element? {
         guard let a = iterator.next() else {
@@ -102,7 +108,7 @@ public struct QuintupleView<Base: Sequence>: IteratorProtocol, Sequence {
     }
 }
 
-public struct SextupleView<Base: Sequence>: IteratorProtocol, Sequence {
+public struct SextuplesView<Base: Sequence>: IteratorProtocol, Sequence {
     public typealias Element = (
         Base.Iterator.Element,
         Base.Iterator.Element,
@@ -112,11 +118,7 @@ public struct SextupleView<Base: Sequence>: IteratorProtocol, Sequence {
         Base.Iterator.Element
     )
     
-    private var iterator: Base.Iterator
-    
-    public init(_ base: Base) {
-        iterator = base.makeIterator()
-    }
+    var iterator: Base.Iterator
     
     public mutating func next() -> Element? {
         guard let a = iterator.next() else {
